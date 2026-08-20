@@ -326,7 +326,7 @@ Patient information includes:
 
 ---
 
-# Project Structure
+# Project Structure ==
 
 ```text
 AIHealthcareManagement
