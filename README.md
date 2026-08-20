@@ -23,8 +23,8 @@ The application provides a structured platform for managing healthcare-related i
 ## Technology Stack
 
 ### Frontend
-- HTML5
 - CSS3
+- HTML5
 - Bootstrap
 - Razor Views
 
@@ -146,7 +146,7 @@ The application provides a structured platform for managing healthcare-related i
 - Database and data-model Planning
 - Healthcare entities and relationships
 - Database structure analysis
-- Support for Entity Framework Core integration
+- Support for Entity Framework Core Integration
 
 ### Current Work
 - Database-related implementation
