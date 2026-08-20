@@ -225,7 +225,6 @@ The application provides a structured platform for managing healthcare-related i
 - Integration with patient and doctor data
 
 ---
-
 ## 7. Kamal Laxman Balwani
 
 ### Contribution
