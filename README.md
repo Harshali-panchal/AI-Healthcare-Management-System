@@ -143,7 +143,7 @@ The application provides a structured platform for managing healthcare-related i
 ## 2. Prasiddhi Jain
 
 ### Contribution
-- Database and data-model planning
+- Database and data-model Planning
 - Healthcare entities and relationships
 - Database structure analysis
 - Support for Entity Framework Core integration
