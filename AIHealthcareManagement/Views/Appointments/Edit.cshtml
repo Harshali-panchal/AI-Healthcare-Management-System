@@ -1,0 +1,126 @@
+﻿@model AIHealthcareManagement.Models.Appointment
+
+@{
+    ViewData["Title"] = "Edit Appointment";
+}
+
+<div class="page-header">
+    <div>
+        <h1>Edit Appointment</h1>
+        <p>Update the appointment details and save the changes.</p>
+    </div>
+</div>
+
+<div class="form-card">
+    <div class="form-card-header">
+        <div class="section-icon">
+            <i class="bi bi-pencil-square"></i>
+        </div>
+        <div>
+            <h2>Appointment Information</h2>
+            <p>Modify the required appointment details below.</p>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <form asp-action="Edit">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <input type="hidden" asp-for="AppointmentId" />
+
+        <div class="form-grid">
+
+            <div class="form-group">
+                <label asp-for="PatientId">Patient</label>
+
+                <select asp-for="PatientId"
+                        class="form-control"
+                        asp-items="ViewBag.PatientId">
+                </select>
+
+                <span asp-validation-for="PatientId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DoctorId">Doctor</label>
+
+                <select asp-for="DoctorId"
+                        class="form-control"
+                        asp-items="ViewBag.DoctorId">
+                </select>
+
+                <span asp-validation-for="DoctorId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="AppointmentDate">Appointment Date</label>
+
+                <input asp-for="AppointmentDate"
+                       type="date"
+                       class="form-control" />
+
+                <span asp-validation-for="AppointmentDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="AppointmentTime">Appointment Time</label>
+
+                <input asp-for="AppointmentTime"
+                       type="time"
+                       class="form-control" />
+
+                <span asp-validation-for="AppointmentTime" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Status">Status</label>
+
+                <input asp-for="Status"
+                       class="form-control"
+                       placeholder="Enter appointment status" />
+
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+
+        </div>
+
+        <div class="form-group full-width">
+            <label asp-for="ReasonForVisit">Reason for Visit</label>
+
+            <textarea asp-for="ReasonForVisit"
+                      class="form-control"
+                      rows="4"
+                      placeholder="Describe the reason for the appointment..."></textarea>
+
+            <span asp-validation-for="ReasonForVisit" class="text-danger"></span>
+        </div>
+
+        <input type="hidden" asp-for="CreatedAt" />
+        <input type="hidden" asp-for="UpdatedAt" />
+
+        <div class="form-divider"></div>
+
+        <div class="form-actions">
+
+            <a asp-action="Index" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left"></i>
+                Back to Appointments
+            </a>
+
+            <button type="submit" class="btn btn-primary">
+                <i class="bi bi-check-circle"></i>
+                Save Changes
+            </button>
+
+        </div>
+
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

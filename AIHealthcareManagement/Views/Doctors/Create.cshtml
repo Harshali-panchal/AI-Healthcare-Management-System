@@ -1,0 +1,142 @@
+﻿@model AIHealthcareManagement.Models.Doctor
+
+@{
+    ViewData["Title"] = "Add Doctor";
+}
+
+<div class="doctor-create-page">
+
+    <div class="doctor-create-header">
+        <h1>Add New Doctor</h1>
+        <p>Create a professional profile for a doctor in the healthcare system.</p>
+    </div>
+
+    <form asp-action="Create" method="post" class="doctor-create-form">
+
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <!-- Professional Information -->
+        <div class="doctor-section-card">
+
+            <div class="section-title">
+                <div>
+                    <h3>👨‍⚕️ Professional Information</h3>
+                    <p>Enter the doctor's basic professional details.</p>
+                </div>
+            </div>
+
+            <div class="doctor-form-grid">
+
+                <div class="doctor-field">
+                    <label asp-for="FullName"></label>
+                    <input asp-for="FullName"
+                           class="form-control"
+                           placeholder="Enter doctor's full name" />
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+
+                <div class="doctor-field">
+                    <label asp-for="Specialization"></label>
+                    <input asp-for="Specialization"
+                           class="form-control"
+                           placeholder="e.g. Cardiologist" />
+                    <span asp-validation-for="Specialization" class="text-danger"></span>
+                </div>
+
+                <div class="doctor-field">
+                    <label asp-for="Qualification"></label>
+                    <input asp-for="Qualification"
+                           class="form-control"
+                           placeholder="e.g. MBBS, MD" />
+                    <span asp-validation-for="Qualification" class="text-danger"></span>
+                </div>
+
+                <div class="doctor-field">
+                    <label asp-for="LicenseNumber"></label>
+                    <input asp-for="LicenseNumber"
+                           class="form-control"
+                           placeholder="Enter license number" />
+                    <span asp-validation-for="LicenseNumber" class="text-danger"></span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Experience Information -->
+        <div class="doctor-section-card">
+
+            <div class="section-title">
+                <div>
+                    <h3>💼 Experience & Consultation</h3>
+                    <p>Enter the doctor's experience and consultation details.</p>
+                </div>
+            </div>
+
+            <div class="doctor-form-grid">
+
+                <div class="doctor-field">
+                    <label asp-for="YearsOfExperience"></label>
+                    <input asp-for="YearsOfExperience"
+                           type="number"
+                           min="0"
+                           class="form-control" />
+                    <span asp-validation-for="YearsOfExperience" class="text-danger"></span>
+                </div>
+
+                <div class="doctor-field">
+                    <label asp-for="ConsultationFee"></label>
+                    <input asp-for="ConsultationFee"
+                           type="number"
+                           min="0"
+                           step="0.01"
+                           class="form-control" />
+                    <span asp-validation-for="ConsultationFee" class="text-danger"></span>
+                </div>
+
+            </div>
+
+            <div class="doctor-verification">
+
+                <input class="form-check-input"
+                       asp-for="IsVerified" />
+
+                <div>
+                    <label asp-for="IsVerified"
+                           class="form-check-label">
+                        Verify Doctor Profile
+                    </label>
+
+                    <small>
+                        Mark this doctor as verified in the healthcare system.
+                    </small>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Actions -->
+        <div class="doctor-form-actions">
+
+            <button type="submit" class="doctor-submit-btn">
+                Add Doctor
+            </button>
+
+            <a asp-action="Index" class="doctor-back-btn">
+                Back to List
+            </a>
+
+        </div>
+
+    </form>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

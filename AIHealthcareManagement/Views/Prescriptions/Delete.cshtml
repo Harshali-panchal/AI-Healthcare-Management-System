@@ -1,0 +1,184 @@
+﻿@model AIHealthcareManagement.Models.Prescription
+
+@{
+    ViewData["Title"] = "Delete Prescription";
+}
+
+<div class="page-header">
+    <div>
+        <h1>Delete Prescription</h1>
+        <p>Review the prescription details before permanently deleting it.</p>
+    </div>
+
+    <a asp-action="Index" class="btn btn-outline-secondary">
+        <i class="bi bi-arrow-left"></i>
+        Back to Prescriptions
+    </a>
+</div>
+
+
+<div class="delete-card">
+
+    <!-- Warning Section -->
+    <div class="delete-warning">
+
+        <div class="delete-warning-icon">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+        </div>
+
+        <div>
+            <h2>Are you sure?</h2>
+            <p>
+                This action will permanently delete this prescription.
+                This action cannot be undone.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="section-divider"></div>
+
+
+    <!-- Prescription Information -->
+    <div class="details-section">
+
+        <div class="section-heading">
+
+            <div class="section-icon small-icon">
+                <i class="bi bi-capsule-pill"></i>
+            </div>
+
+            <div>
+                <h3>Prescription Information</h3>
+                <p>Review the prescription details before deletion.</p>
+            </div>
+
+        </div>
+
+
+        <div class="details-grid">
+
+            <div class="detail-item">
+                <span class="detail-label">Medicine Name</span>
+                <span class="detail-value">
+                    @Model.MedicineName
+                </span>
+            </div>
+
+
+            <div class="detail-item">
+                <span class="detail-label">Dosage</span>
+                <span class="detail-value">
+                    @Model.Dosage
+                </span>
+            </div>
+
+
+            <div class="detail-item">
+                <span class="detail-label">Frequency</span>
+                <span class="detail-value">
+                    @Model.Frequency
+                </span>
+            </div>
+
+
+            <div class="detail-item">
+                <span class="detail-label">Duration</span>
+                <span class="detail-value">
+                    @Model.DurationDays Days
+                </span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Medical Record -->
+    <div class="details-section">
+
+        <div class="section-heading">
+
+            <div class="section-icon small-icon">
+                <i class="bi bi-file-earmark-medical"></i>
+            </div>
+
+            <div>
+                <h3>Medical Record</h3>
+                <p>The medical record associated with this prescription.</p>
+            </div>
+
+        </div>
+
+
+        <div class="details-grid">
+
+            <div class="detail-item">
+                <span class="detail-label">Medical Record ID</span>
+                <span class="detail-value">
+                    @Model.Record?.RecordId
+                </span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Instructions -->
+    <div class="details-section">
+
+        <div class="section-heading">
+
+            <div class="section-icon small-icon">
+                <i class="bi bi-journal-text"></i>
+            </div>
+
+            <div>
+                <h3>Patient Instructions</h3>
+                <p>Instructions associated with this prescription.</p>
+            </div>
+
+        </div>
+
+
+        <div class="instruction-box">
+            @Model.Instructions
+        </div>
+
+    </div>
+
+
+    <div class="form-divider"></div>
+
+
+    <!-- Delete Actions -->
+    <form asp-action="Delete" method="post">
+
+        <input type="hidden" asp-for="PrescriptionId" />
+
+        <div class="delete-actions">
+
+            <a asp-action="Index"
+               class="btn btn-outline-secondary">
+
+                <i class="bi bi-x-circle"></i>
+                Cancel
+
+            </a>
+
+
+            <button type="submit"
+                    class="btn btn-danger">
+
+                <i class="bi bi-trash"></i>
+                Delete Prescription
+
+            </button>
+
+        </div>
+
+    </form>
+
+</div>

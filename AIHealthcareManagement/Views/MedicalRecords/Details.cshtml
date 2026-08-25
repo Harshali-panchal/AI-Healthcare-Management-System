@@ -1,0 +1,145 @@
+﻿@model AIHealthcareManagement.Models.MedicalRecord
+
+@{
+    ViewData["Title"] = "Medical Record Details";
+}
+
+<div class="page-header">
+    <div>
+        <h1>Medical Record Details</h1>
+        <p>Review the complete medical and consultation information for this record.</p>
+    </div>
+
+    <a asp-action="Index" class="btn btn-outline-secondary">
+        <i class="bi bi-arrow-left"></i>
+        Back to Records
+    </a>
+</div>
+
+<div class="details-card">
+
+    <!-- Header -->
+    <div class="details-profile-header">
+
+        <div class="details-avatar">
+            <i class="bi bi-file-earmark-medical"></i>
+        </div>
+
+        <div>
+            <h2>Medical Record</h2>
+            <p>
+                Patient: <strong>@Model.Patient?.FullName</strong>
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- Record Information -->
+    <div class="details-section">
+
+        <div class="details-section-title">
+            <div class="section-icon small-icon">
+                <i class="bi bi-clipboard2-pulse"></i>
+            </div>
+
+            <div>
+                <h3>Clinical Information</h3>
+                <p>Diagnosis and consultation details.</p>
+            </div>
+        </div>
+
+        <div class="details-grid">
+
+            <div class="detail-item">
+                <span class="detail-label">Diagnosis</span>
+                <span class="detail-value">
+                    @Model.Diagnosis
+                </span>
+            </div>
+
+            <div class="detail-item">
+                <span class="detail-label">Record Date</span>
+                <span class="detail-value">
+                    @Model.RecordDate.ToString("dd MMM yyyy")
+                </span>
+            </div>
+
+            <div class="detail-item full-detail">
+                <span class="detail-label">Consultation Notes</span>
+
+                <div class="consultation-notes">
+                    @Model.ConsultationNotes
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Related Information -->
+    <div class="details-section">
+
+        <div class="details-section-title">
+            <div class="section-icon small-icon">
+                <i class="bi bi-link-45deg"></i>
+            </div>
+
+            <div>
+                <h3>Related Information</h3>
+                <p>Associated patient, doctor and appointment details.</p>
+            </div>
+        </div>
+
+        <div class="details-grid">
+
+            <div class="detail-item">
+                <span class="detail-label">Patient</span>
+                <span class="detail-value">
+                    @Model.Patient?.FullName
+                </span>
+            </div>
+
+            <div class="detail-item">
+                <span class="detail-label">Doctor</span>
+                <span class="detail-value">
+                    Dr. @Model.Doctor?.FullName
+                </span>
+            </div>
+
+            <div class="detail-item full-detail">
+                <span class="detail-label">Appointment ID</span>
+                <span class="detail-value">
+                    #@Model.AppointmentId
+                </span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Actions -->
+    <div class="details-actions">
+
+        <a asp-action="Edit"
+           asp-route-id="@Model.RecordId"
+           class="btn btn-primary">
+
+            <i class="bi bi-pencil"></i>
+            Edit Medical Record
+
+        </a>
+
+        <a asp-action="Index"
+           class="btn btn-outline-secondary">
+
+            <i class="bi bi-arrow-left"></i>
+            Back to Records
+
+        </a>
+
+    </div>
+
+</div>

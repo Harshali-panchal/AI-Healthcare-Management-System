@@ -1,0 +1,206 @@
+﻿@model AIHealthcareManagement.Models.AisymptomAssessment
+
+@{
+    ViewData["Title"] = "Edit AI Assessment";
+}
+
+<div class="page-header">
+    <div>
+        <h1>Edit AI Assessment</h1>
+        <p>Review and update the patient symptom analysis details.</p>
+    </div>
+
+    <a asp-action="Details"
+       asp-route-id="@Model.AssessmentId"
+       class="btn-secondary">
+        <i class="bi bi-eye"></i>
+        View Details
+    </a>
+</div>
+
+<div class="content-card">
+
+    <div class="form-card-header">
+        <div class="form-icon">
+            <i class="bi bi-cpu"></i>
+        </div>
+
+        <div>
+            <h2>Assessment Information</h2>
+            <p>Update patient symptoms and AI-generated assessment details.</p>
+        </div>
+    </div>
+
+    <form asp-action="Edit" method="post">
+
+        <div asp-validation-summary="ModelOnly"
+             class="text-danger validation-summary">
+        </div>
+
+        <input type="hidden" asp-for="AssessmentId" />
+
+        <div class="form-grid">
+
+            <!-- Patient -->
+            <div class="form-group">
+                <label asp-for="PatientId">
+                    <i class="bi bi-person"></i>
+                    Patient
+                </label>
+
+                <select asp-for="PatientId"
+                        class="form-control"
+                        asp-items="ViewBag.PatientId">
+                </select>
+
+                <span asp-validation-for="PatientId"
+                      class="text-danger">
+                </span>
+            </div>
+
+
+            <!-- Urgency -->
+            <div class="form-group">
+                <label asp-for="UrgencyLevel">
+                    <i class="bi bi-exclamation-triangle"></i>
+                    Urgency Level
+                </label>
+
+                <select asp-for="UrgencyLevel"
+                        class="form-control">
+
+                    <option value="">Select urgency level</option>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                    <option value="Critical">Critical</option>
+
+                </select>
+
+                <span asp-validation-for="UrgencyLevel"
+                      class="text-danger">
+                </span>
+            </div>
+
+
+            <!-- Symptoms -->
+            <div class="form-group full-width">
+                <label asp-for="SymptomsInput">
+                    <i class="bi bi-clipboard-pulse"></i>
+                    Symptoms
+                </label>
+
+                <textarea asp-for="SymptomsInput"
+                          class="form-control form-textarea"
+                          rows="5"
+                          placeholder="Describe the patient's symptoms...">
+                </textarea>
+
+                <span asp-validation-for="SymptomsInput"
+                      class="text-danger">
+                </span>
+            </div>
+
+
+            <!-- AI Result -->
+            <div class="form-group full-width">
+                <label asp-for="AiresultSummary">
+                    <i class="bi bi-robot"></i>
+                    AI Assessment Summary
+                </label>
+
+                <textarea asp-for="AiresultSummary"
+                          class="form-control form-textarea"
+                          rows="5"
+                          placeholder="Enter AI assessment summary...">
+                </textarea>
+
+                <span asp-validation-for="AiresultSummary"
+                      class="text-danger">
+                </span>
+            </div>
+
+
+            <!-- Confidence -->
+            <div class="form-group">
+                <label asp-for="ConfidenceScore">
+                    <i class="bi bi-bar-chart"></i>
+                    Confidence Score
+                </label>
+
+                <input asp-for="ConfidenceScore"
+                       class="form-control"
+                       type="number"
+                       step="0.01"
+                       min="0"
+                       max="1" />
+
+                <span asp-validation-for="ConfidenceScore"
+                      class="text-danger">
+                </span>
+            </div>
+
+
+            <!-- Model Version -->
+            <div class="form-group">
+                <label asp-for="ModelVersion">
+                    <i class="bi bi-cpu"></i>
+                    Model Version
+                </label>
+
+                <input asp-for="ModelVersion"
+                       class="form-control"
+                       placeholder="Example: Rule-Based AI v1.0" />
+
+                <span asp-validation-for="ModelVersion"
+                      class="text-danger">
+                </span>
+            </div>
+
+
+            <!-- Created Date -->
+            <div class="form-group">
+                <label asp-for="CreatedAt">
+                    <i class="bi bi-calendar-event"></i>
+                    Assessment Date & Time
+                </label>
+
+                <input asp-for="CreatedAt"
+                       class="form-control"
+                       type="datetime-local"
+                       value="@Model.CreatedAt.ToString("yyyy-MM-ddTHH:mm")" />
+
+                <span asp-validation-for="CreatedAt"
+                      class="text-danger">
+                </span>
+            </div>
+
+        </div>
+
+
+        <!-- Actions -->
+        <div class="form-actions">
+
+            <a asp-action="Index"
+               class="btn-secondary">
+                <i class="bi bi-arrow-left"></i>
+                Cancel
+            </a>
+
+            <button type="submit"
+                    class="btn-primary">
+                <i class="bi bi-check-lg"></i>
+                Save Changes
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

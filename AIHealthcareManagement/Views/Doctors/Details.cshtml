@@ -1,0 +1,169 @@
+﻿@model AIHealthcareManagement.Models.Doctor
+
+@{
+    ViewData["Title"] = "Doctor Details";
+}
+
+<div class="doctor-form-page">
+
+    <!-- Page Header -->
+    <div class="doctor-form-header">
+        <h1>Doctor Profile</h1>
+        <p>View complete professional information and profile details.</p>
+    </div>
+
+
+    <!-- Profile Summary Card -->
+    <div class="doctor-form-card doctor-profile-summary">
+
+        <div class="doctor-profile-avatar">
+            👨‍⚕️
+        </div>
+
+        <div class="doctor-profile-main">
+
+            <h2>@Model.FullName</h2>
+
+            <p class="doctor-specialization">
+                @Model.Specialization
+            </p>
+
+            <p class="doctor-qualification">
+                @Model.Qualification
+            </p>
+
+            @if (Model.IsVerified)
+            {
+                <span class="verification-badge verified">
+                    ✓ Verified Doctor
+                </span>
+            }
+            else
+            {
+                <span class="verification-badge not-verified">
+                    Not Verified
+                </span>
+            }
+
+        </div>
+
+    </div>
+
+
+    <!-- Professional Information -->
+    <div class="doctor-form-card">
+
+        <div class="doctor-card-heading">
+            <div class="doctor-icon">👨‍⚕️</div>
+
+            <div>
+                <h3>Professional Information</h3>
+                <p>Doctor's qualifications and professional credentials.</p>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="doctor-details-grid">
+
+            <div class="detail-item">
+                <span class="detail-label">Full Name</span>
+                <span class="detail-value">@Model.FullName</span>
+            </div>
+
+            <div class="detail-item">
+                <span class="detail-label">Specialization</span>
+                <span class="detail-value">@Model.Specialization</span>
+            </div>
+
+            <div class="detail-item">
+                <span class="detail-label">Qualification</span>
+                <span class="detail-value">@Model.Qualification</span>
+            </div>
+
+            <div class="detail-item">
+                <span class="detail-label">License Number</span>
+                <span class="detail-value">@Model.LicenseNumber</span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Experience & Consultation -->
+    <div class="doctor-form-card">
+
+        <div class="doctor-card-heading">
+            <div class="doctor-icon">💼</div>
+
+            <div>
+                <h3>Experience & Consultation</h3>
+                <p>Professional experience and consultation information.</p>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="doctor-details-grid">
+
+            <div class="detail-item">
+                <span class="detail-label">Years of Experience</span>
+                <span class="detail-value">
+                    @Model.YearsOfExperience years
+                </span>
+            </div>
+
+            <div class="detail-item">
+                <span class="detail-label">Consultation Fee</span>
+                <span class="detail-value">
+                    ₹@Model.ConsultationFee
+                </span>
+            </div>
+
+            <div class="detail-item">
+                <span class="detail-label">Profile Status</span>
+
+                @if (Model.IsVerified)
+                {
+                    <span class="verification-badge verified">
+                        ✓ Verified
+                    </span>
+                }
+                else
+                {
+                    <span class="verification-badge not-verified">
+                        Not Verified
+                    </span>
+                }
+            </div>
+
+            <div class="detail-item">
+                <span class="detail-label">Profile Created</span>
+                <span class="detail-value">
+                    @Model.CreatedAt.ToString("dd MMM yyyy")
+                </span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Actions -->
+    <div class="doctor-form-actions">
+
+        <a asp-action="Edit"
+           asp-route-id="@Model.DoctorId"
+           class="btn btn-primary doctor-submit-btn">
+            Edit Doctor
+        </a>
+
+        <a asp-action="Index"
+           class="btn btn-outline-secondary doctor-cancel-btn">
+            Back to List
+        </a>
+
+    </div>
+
+</div>

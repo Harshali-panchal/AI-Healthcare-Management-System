@@ -1,0 +1,170 @@
+﻿@model AIHealthcareManagement.Models.Doctor
+
+@{
+    ViewData["Title"] = "Delete Doctor";
+}
+
+<div class="doctor-delete-page">
+
+    <!-- Page Header -->
+    <div class="doctor-page-header">
+        <h1>Delete Doctor</h1>
+        <p>Review the doctor's information before permanently deleting the profile.</p>
+    </div>
+
+
+    <!-- Warning Card -->
+    <div class="delete-warning-card">
+
+        <div class="delete-warning-icon">
+            ⚠️
+        </div>
+
+        <div>
+            <h3>Are you sure you want to delete this doctor?</h3>
+            <p>
+                This action will permanently remove the doctor's profile from the healthcare system.
+                Please review the information below before continuing.
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- Doctor Profile Summary -->
+    <div class="delete-profile-summary">
+
+        <div class="delete-profile-avatar">
+            👨‍⚕️
+        </div>
+
+        <div>
+            <h2>@Model.FullName</h2>
+            <p>@Model.Specialization</p>
+            <span>@Model.Qualification</span>
+        </div>
+
+    </div>
+
+
+    <!-- Professional Information -->
+    <div class="delete-section">
+
+        <div class="delete-section-header">
+            <div>
+                <span class="section-icon">👨‍⚕️</span>
+                <h2>Professional Information</h2>
+            </div>
+
+            <p>Doctor's qualifications and professional credentials.</p>
+        </div>
+
+        <div class="delete-details-grid">
+
+            <div class="delete-detail-card">
+                <span>Full Name</span>
+                <strong>@Model.FullName</strong>
+            </div>
+
+            <div class="delete-detail-card">
+                <span>Specialization</span>
+                <strong>@Model.Specialization</strong>
+            </div>
+
+            <div class="delete-detail-card">
+                <span>Qualification</span>
+                <strong>@Model.Qualification</strong>
+            </div>
+
+            <div class="delete-detail-card">
+                <span>License Number</span>
+                <strong>@Model.LicenseNumber</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Experience Information -->
+    <div class="delete-section">
+
+        <div class="delete-section-header">
+            <div>
+                <span class="section-icon">💼</span>
+                <h2>Experience & Consultation</h2>
+            </div>
+
+            <p>Professional experience and consultation information.</p>
+        </div>
+
+        <div class="delete-details-grid">
+
+            <div class="delete-detail-card">
+                <span>Years of Experience</span>
+                <strong>@Model.YearsOfExperience Years</strong>
+            </div>
+
+            <div class="delete-detail-card">
+                <span>Consultation Fee</span>
+                <strong>₹@Model.ConsultationFee</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Additional Information -->
+    <div class="delete-section">
+
+        <div class="delete-section-header">
+            <div>
+                <span class="section-icon">📋</span>
+                <h2>Profile Information</h2>
+            </div>
+
+            <p>Additional doctor profile details.</p>
+        </div>
+
+        <div class="delete-details-grid">
+
+            <div class="delete-detail-card">
+                <span>Verification Status</span>
+
+                @if (Model.IsVerified)
+                {
+                    <strong class="verified-text">✓ Verified Doctor</strong>
+                }
+                else
+                {
+                    <strong class="unverified-text">Not Verified</strong>
+                }
+            </div>
+
+            <div class="delete-detail-card">
+                <span>Profile Created</span>
+                <strong>@Model.CreatedAt.ToString("dd MMM yyyy")</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Delete Actions -->
+    <form asp-action="Delete" method="post" class="delete-actions">
+
+        <input type="hidden" asp-for="DoctorId" />
+
+        <button type="submit" class="btn btn-danger delete-confirm-btn">
+            🗑️ Delete Doctor
+        </button>
+
+        <a asp-action="Index" class="btn btn-outline-secondary delete-cancel-btn">
+            Cancel
+        </a>
+
+    </form>
+
+</div>

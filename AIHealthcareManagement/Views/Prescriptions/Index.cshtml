@@ -1,0 +1,123 @@
+﻿@model IEnumerable<AIHealthcareManagement.Models.Prescription>
+
+@{
+    ViewData["Title"] = "Prescriptions";
+}
+
+<div class="page-header">
+    <div>
+        <h1>Prescriptions</h1>
+        <p>Manage prescribed medicines, dosage schedules and treatment instructions.</p>
+    </div>
+
+    <a asp-action="Create" class="btn-primary">
+        <i class="bi bi-plus-lg"></i>
+        Add Prescription
+    </a>
+</div>
+
+<div class="content-card">
+
+    <div class="table-header">
+        <div>
+            <h2>Prescription List</h2>
+            <p>View and manage all patient prescriptions.</p>
+        </div>
+
+        <div class="count-badge">
+            @Model.Count() Prescription@(Model.Count() == 1 ? "" : "s")
+        </div>
+    </div>
+
+    <div class="table-responsive">
+
+        <table class="data-table">
+
+            <thead>
+                <tr>
+                    <th>Medicine</th>
+                    <th>Dosage</th>
+                    <th>Frequency</th>
+                    <th>Duration</th>
+                    <th>Instructions</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>
+                            <strong class="medicine-name">
+                                @item.MedicineName
+                            </strong>
+                        </td>
+
+                        <td>
+                            @item.Dosage
+                        </td>
+
+                        <td>
+                            <span class="frequency-badge">
+                                @item.Frequency
+                            </span>
+                        </td>
+
+                        <td>
+                            <span class="duration-text">
+                                @item.DurationDays days
+                            </span>
+                        </td>
+
+                        <td>
+                            <span class="notes-preview">
+                                @item.Instructions
+                            </span>
+                        </td>
+
+                        <td>
+                            <div class="action-buttons">
+
+                                <a asp-action="Edit"
+                                   asp-route-id="@item.PrescriptionId"
+                                   class="btn-icon btn-edit"
+                                   title="Edit">
+
+                                    <i class="bi bi-pencil"></i>
+
+                                </a>
+
+                                <a asp-action="Details"
+                                   asp-route-id="@item.PrescriptionId"
+                                   class="btn-icon btn-view"
+                                   title="View Details">
+
+                                    <i class="bi bi-eye"></i>
+
+                                </a>
+
+                                <a asp-action="Delete"
+                                   asp-route-id="@item.PrescriptionId"
+                                   class="btn-icon btn-delete-icon"
+                                   title="Delete">
+
+                                    <i class="bi bi-trash"></i>
+
+                                </a>
+
+                            </div>
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>

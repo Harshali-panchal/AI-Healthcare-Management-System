@@ -1,8 +1,119 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Dashboard";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="text-center mb-5">
+    <h1 class="display-4 fw-bold text-primary">
+        AI Healthcare Management System
+    </h1>
+
+    <p class="lead text-muted">
+        Smart healthcare management for patients, doctors, appointments and medical records.
+    </p>
+</div>
+
+<div class="row g-4">
+
+    <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body text-center">
+                <h3>👨‍⚕️ Doctors</h3>
+                <p class="text-muted">
+                    Manage doctor profiles, specializations and availability.
+                </p>
+
+                <a asp-controller="Doctors"
+                   asp-action="Index"
+                   class="btn btn-primary">
+                    Manage Doctors
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body text-center">
+                <h3>🧑‍🤝‍🧑 Patients</h3>
+                <p class="text-muted">
+                    Manage patient details and healthcare information.
+                </p>
+
+                <a asp-controller="Patients"
+                   asp-action="Index"
+                   class="btn btn-success">
+                    Manage Patients
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body text-center">
+                <h3>📅 Appointments</h3>
+                <p class="text-muted">
+                    Schedule and manage doctor-patient appointments.
+                </p>
+
+                <a asp-controller="Appointments"
+                   asp-action="Index"
+                   class="btn btn-info text-white">
+                    Manage Appointments
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body text-center">
+                <h3>📋 Medical Records</h3>
+                <p class="text-muted">
+                    Store and manage patient medical records.
+                </p>
+
+                <a asp-controller="MedicalRecords"
+                   asp-action="Index"
+                   class="btn btn-danger">
+                    Medical Records
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body text-center">
+                <h3>💊 Prescriptions</h3>
+                <p class="text-muted">
+                    Manage medicines, dosage and treatment instructions.
+                </p>
+
+                <a asp-controller="Prescriptions"
+                   asp-action="Index"
+                   class="btn btn-warning">
+                    Prescriptions
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body text-center">
+                <h3>🤖 AI Symptom Assessment</h3>
+                <p class="text-muted">
+                    Record symptoms and manage AI-based health assessments.
+                </p>
+
+                <a asp-controller="AisymptomAssessments"
+                   asp-action="Index"
+                   class="btn btn-dark">
+                    AI Assessment
+                </a>
+            </div>
+        </div>
+    </div>
+
 </div>

@@ -1,0 +1,193 @@
+﻿@model AIHealthcareManagement.Models.MedicalRecord
+
+@{
+    ViewData["Title"] = "Edit Medical Record";
+}
+
+<div class="page-header">
+    <div>
+        <h1>Edit Medical Record</h1>
+        <p>Update the medical record and consultation information.</p>
+    </div>
+</div>
+
+<div class="form-card">
+
+    <div class="form-card-header">
+        <div class="section-icon">
+            <i class="bi bi-pencil-square"></i>
+        </div>
+
+        <div>
+            <h2>Medical Record Information</h2>
+            <p>Modify the patient, doctor and clinical details below.</p>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <form asp-action="Edit" method="post">
+
+        <div asp-validation-summary="ModelOnly"
+             class="text-danger mb-3">
+        </div>
+
+        <input type="hidden" asp-for="RecordId" />
+
+        <!-- Patient, Doctor and Appointment -->
+        <div class="form-grid">
+
+            <div class="form-group">
+                <label asp-for="PatientId">Patient</label>
+
+                <select asp-for="PatientId"
+                        class="form-control"
+                        asp-items="ViewBag.PatientId">
+                </select>
+
+                <span asp-validation-for="PatientId"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DoctorId">Doctor</label>
+
+                <select asp-for="DoctorId"
+                        class="form-control"
+                        asp-items="ViewBag.DoctorId">
+                </select>
+
+                <span asp-validation-for="DoctorId"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="form-group full-width">
+                <label asp-for="AppointmentId">
+                    Related Appointment
+                </label>
+
+                <select asp-for="AppointmentId"
+                        class="form-control"
+                        asp-items="ViewBag.AppointmentId">
+                </select>
+
+                <span asp-validation-for="AppointmentId"
+                      class="text-danger">
+                </span>
+            </div>
+
+        </div>
+
+
+        <!-- Clinical Information -->
+        <div class="form-section">
+
+            <div class="section-heading">
+                <div class="section-icon small-icon">
+                    <i class="bi bi-heart-pulse"></i>
+                </div>
+
+                <div>
+                    <h3>Clinical Information</h3>
+                    <p>Update the diagnosis and consultation notes.</p>
+                </div>
+            </div>
+
+            <div class="form-grid">
+
+                <div class="form-group full-width">
+                    <label asp-for="Diagnosis">Diagnosis</label>
+
+                    <input asp-for="Diagnosis"
+                           class="form-control"
+                           placeholder="Enter diagnosis" />
+
+                    <span asp-validation-for="Diagnosis"
+                          class="text-danger">
+                    </span>
+                </div>
+
+                <div class="form-group full-width">
+                    <label asp-for="ConsultationNotes">
+                        Consultation Notes
+                    </label>
+
+                    <textarea asp-for="ConsultationNotes"
+                              class="form-control"
+                              rows="5"
+                              placeholder="Enter consultation notes and recommendations..."></textarea>
+
+                    <span asp-validation-for="ConsultationNotes"
+                          class="text-danger">
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Record Date -->
+        <div class="form-section">
+
+            <div class="section-heading">
+                <div class="section-icon small-icon">
+                    <i class="bi bi-calendar-event"></i>
+                </div>
+
+                <div>
+                    <h3>Record Information</h3>
+                    <p>Update the medical record date if required.</p>
+                </div>
+            </div>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label asp-for="RecordDate">Record Date</label>
+
+                    <input asp-for="RecordDate"
+                           type="date"
+                           class="form-control" />
+
+                    <span asp-validation-for="RecordDate"
+                          class="text-danger">
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-divider"></div>
+
+
+        <!-- Actions -->
+        <div class="form-actions">
+
+            <a asp-action="Index"
+               class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left"></i>
+                Back to Records
+            </a>
+
+            <button type="submit"
+                    class="btn btn-primary">
+                <i class="bi bi-check-circle"></i>
+                Save Changes
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,250 @@
+﻿@model AIHealthcareManagement.Models.Prescription
+
+@{
+    ViewData["Title"] = "Edit Prescription";
+}
+
+<div class="page-header">
+    <div>
+        <h1>Edit Prescription</h1>
+        <p>Update the medicine details and treatment instructions.</p>
+    </div>
+</div>
+
+<div class="form-card">
+
+    <div class="form-card-header">
+
+        <div class="section-icon">
+            <i class="bi bi-pencil-square"></i>
+        </div>
+
+        <div>
+            <h2>Prescription Information</h2>
+            <p>Update the prescription details below.</p>
+        </div>
+
+    </div>
+
+    <div class="section-divider"></div>
+
+    <form asp-action="Edit" method="post">
+
+        <div asp-validation-summary="ModelOnly"
+             class="text-danger mb-3">
+        </div>
+
+        <input type="hidden" asp-for="PrescriptionId" />
+
+
+        <!-- Medical Record -->
+        <div class="form-section">
+
+            <div class="section-heading">
+
+                <div class="section-icon small-icon">
+                    <i class="bi bi-file-earmark-medical"></i>
+                </div>
+
+                <div>
+                    <h3>Medical Record</h3>
+                    <p>Select the medical record associated with this prescription.</p>
+                </div>
+
+            </div>
+
+            <div class="form-grid">
+
+                <div class="form-group full-width">
+
+                    <label asp-for="RecordId">
+                        Medical Record
+                    </label>
+
+                    <select asp-for="RecordId"
+                            class="form-control"
+                            asp-items="ViewBag.RecordId">
+                    </select>
+
+                    <span asp-validation-for="RecordId"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Medicine Information -->
+        <div class="form-section">
+
+            <div class="section-heading">
+
+                <div class="section-icon small-icon">
+                    <i class="bi bi-capsule"></i>
+                </div>
+
+                <div>
+                    <h3>Medicine Information</h3>
+                    <p>Update the prescribed medicine and dosage details.</p>
+                </div>
+
+            </div>
+
+            <div class="form-grid">
+
+                <!-- Medicine Name -->
+                <div class="form-group">
+
+                    <label asp-for="MedicineName">
+                        Medicine Name
+                    </label>
+
+                    <input asp-for="MedicineName"
+                           class="form-control"
+                           placeholder="e.g. Paracetamol" />
+
+                    <span asp-validation-for="MedicineName"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+
+                <!-- Dosage -->
+                <div class="form-group">
+
+                    <label asp-for="Dosage">
+                        Dosage
+                    </label>
+
+                    <input asp-for="Dosage"
+                           class="form-control"
+                           placeholder="e.g. 500 mg" />
+
+                    <span asp-validation-for="Dosage"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+
+                <!-- Frequency -->
+                <div class="form-group">
+
+                    <label asp-for="Frequency">
+                        Frequency
+                    </label>
+
+                    <input asp-for="Frequency"
+                           class="form-control"
+                           placeholder="e.g. Twice a day" />
+
+                    <span asp-validation-for="Frequency"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+
+                <!-- Duration -->
+                <div class="form-group">
+
+                    <label asp-for="DurationDays">
+                        Duration (Days)
+                    </label>
+
+                    <input asp-for="DurationDays"
+                           type="number"
+                           min="1"
+                           class="form-control"
+                           placeholder="e.g. 5" />
+
+                    <span asp-validation-for="DurationDays"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Instructions -->
+        <div class="form-section">
+
+            <div class="section-heading">
+
+                <div class="section-icon small-icon">
+                    <i class="bi bi-journal-text"></i>
+                </div>
+
+                <div>
+                    <h3>Instructions</h3>
+                    <p>Update any special instructions for the patient.</p>
+                </div>
+
+            </div>
+
+            <div class="form-grid">
+
+                <div class="form-group full-width">
+
+                    <label asp-for="Instructions">
+                        Patient Instructions
+                    </label>
+
+                    <textarea asp-for="Instructions"
+                              class="form-control"
+                              rows="5"
+                              placeholder="Enter instructions for taking the medicine..."></textarea>
+
+                    <span asp-validation-for="Instructions"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-divider"></div>
+
+
+        <!-- Actions -->
+        <div class="form-actions">
+
+            <a asp-action="Index"
+               class="btn btn-outline-secondary">
+
+                <i class="bi bi-arrow-left"></i>
+                Back to Prescriptions
+
+            </a>
+
+
+            <button type="submit"
+                    class="btn btn-primary">
+
+                <i class="bi bi-check-circle"></i>
+                Save Changes
+
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

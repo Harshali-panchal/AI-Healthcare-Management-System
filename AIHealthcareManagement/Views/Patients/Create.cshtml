@@ -1,77 +1,232 @@
 ﻿@model AIHealthcareManagement.Models.Patient
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Add Patient";
 }
 
-<h1>Create</h1>
+<div class="patient-form-page">
 
-<h4>Patient</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-controller="Patients" asp-action="Create" method="post">
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="UserId" class="control-label"></label>
-                <select asp-for="UserId" class ="form-control" asp-items="ViewBag.UserId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="FullName" class="control-label"></label>
-                <input asp-for="FullName" class="form-control" />
-                <span asp-validation-for="FullName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DateOfBirth" class="control-label"></label>
-                <input asp-for="DateOfBirth" class="form-control" />
-                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Gender" class="control-label"></label>
-                <input asp-for="Gender" class="form-control" />
-                <span asp-validation-for="Gender" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BloodGroup" class="control-label"></label>
-                <input asp-for="BloodGroup" class="form-control" />
-                <span asp-validation-for="BloodGroup" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
-                <input asp-for="Address" class="form-control" />
-                <span asp-validation-for="Address" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Allergies" class="control-label"></label>
-                <input asp-for="Allergies" class="form-control" />
-                <span asp-validation-for="Allergies" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ChronicConditions" class="control-label"></label>
-                <input asp-for="ChronicConditions" class="form-control" />
-                <span asp-validation-for="ChronicConditions" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EmergencyContactName" class="control-label"></label>
-                <input asp-for="EmergencyContactName" class="form-control" />
-                <span asp-validation-for="EmergencyContactName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EmergencyContactPhone" class="control-label"></label>
-                <input asp-for="EmergencyContactPhone" class="form-control" />
-                <span asp-validation-for="EmergencyContactPhone" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+    <!-- Page Header -->
+    <div class="patient-form-header">
+        <h1>Add New Patient</h1>
+        <p>Create a complete healthcare profile for a new patient.</p>
     </div>
+
+
+    <form asp-controller="Patients" asp-action="Create" method="post">
+
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+
+        <!-- Personal Information -->
+        <div class="patient-form-card">
+
+            <div class="form-section-heading">
+                <h2>👤 Personal Information</h2>
+                <p>Enter the patient's basic personal and demographic details.</p>
+            </div>
+
+            <div class="patient-form-grid">
+
+                <div class="form-group">
+                    <label asp-for="FullName">Full Name</label>
+                    <input asp-for="FullName"
+                           class="form-control"
+                           placeholder="Enter patient's full name" />
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="DateOfBirth">Date of Birth</label>
+                    <input asp-for="DateOfBirth"
+                           type="date"
+                           class="form-control" />
+                    <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="Gender">Gender</label>
+
+                    <select asp-for="Gender" class="form-control">
+                        <option value="">Select gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+
+                    <span asp-validation-for="Gender" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="BloodGroup">Blood Group</label>
+
+                    <select asp-for="BloodGroup" class="form-control">
+                        <option value="">Select blood group</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+
+                    <span asp-validation-for="BloodGroup" class="text-danger"></span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Medical Information -->
+        <div class="patient-form-card">
+
+            <div class="form-section-heading">
+                <h2>🩺 Medical Information</h2>
+                <p>Provide relevant medical information and health conditions.</p>
+            </div>
+
+            <div class="patient-form-grid">
+
+                <div class="form-group full-width">
+                    <label asp-for="Allergies">Allergies</label>
+
+                    <textarea asp-for="Allergies"
+                              class="form-control"
+                              rows="3"
+                              placeholder="Enter known allergies, if any"></textarea>
+
+                    <span asp-validation-for="Allergies"
+                          class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group full-width">
+                    <label asp-for="ChronicConditions">Chronic Conditions</label>
+
+                    <textarea asp-for="ChronicConditions"
+                              class="form-control"
+                              rows="3"
+                              placeholder="Enter chronic medical conditions, if any"></textarea>
+
+                    <span asp-validation-for="ChronicConditions"
+                          class="text-danger"></span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Contact Information -->
+        <div class="patient-form-card">
+
+            <div class="form-section-heading">
+                <h2>📞 Contact & Emergency Details</h2>
+                <p>Add address and emergency contact information.</p>
+            </div>
+
+            <div class="patient-form-grid">
+
+                <div class="form-group full-width">
+                    <label asp-for="Address">Address</label>
+
+                    <textarea asp-for="Address"
+                              class="form-control"
+                              rows="3"
+                              placeholder="Enter patient's complete address"></textarea>
+
+                    <span asp-validation-for="Address"
+                          class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="EmergencyContactName">
+                        Emergency Contact Name
+                    </label>
+
+                    <input asp-for="EmergencyContactName"
+                           class="form-control"
+                           placeholder="Enter emergency contact name" />
+
+                    <span asp-validation-for="EmergencyContactName"
+                          class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="EmergencyContactPhone">
+                        Emergency Contact Phone
+                    </label>
+
+                    <input asp-for="EmergencyContactPhone"
+                           type="tel"
+                           class="form-control"
+                           placeholder="Enter emergency contact number" />
+
+                    <span asp-validation-for="EmergencyContactPhone"
+                          class="text-danger"></span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Hidden / User Selection -->
+        <div class="patient-form-card">
+
+            <div class="form-section-heading">
+                <h2>👤 Account Information</h2>
+                <p>Associate this patient profile with a registered user account.</p>
+            </div>
+
+            <div class="patient-form-grid">
+
+                <div class="form-group">
+                    <label asp-for="UserId">User Account</label>
+
+                    <select asp-for="UserId"
+                            class="form-control"
+                            asp-items="ViewBag.UserId">
+
+                        <option value="">Select user account</option>
+
+                    </select>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Actions -->
+        <div class="patient-form-actions">
+
+            <button type="submit" class="btn btn-primary patient-submit-btn">
+                Add Patient
+            </button>
+
+            <a asp-action="Index"
+               class="btn btn-outline-secondary patient-cancel-btn">
+                Cancel
+            </a>
+
+        </div>
+
+    </form>
+
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

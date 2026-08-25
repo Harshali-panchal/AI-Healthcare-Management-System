@@ -1,0 +1,143 @@
+﻿@model AIHealthcareManagement.Models.Appointment
+
+@{
+    ViewData["Title"] = "Appointment Details";
+}
+
+<div class="page-header">
+    <div>
+        <h1>Appointment Details</h1>
+        <p>View complete information about the scheduled appointment.</p>
+    </div>
+</div>
+
+<div class="details-container">
+
+    <!-- Appointment Overview -->
+    <div class="profile-summary">
+        <div class="profile-icon">
+            <i class="bi bi-calendar-check"></i>
+        </div>
+
+        <div>
+            <h2>
+                @(Model.Patient?.FullName ?? "Patient")
+            </h2>
+
+            <p>
+                Appointment on
+                <strong>@Model.AppointmentDate.ToString("dd MMM yyyy")</strong>
+                at
+                <strong>@Model.AppointmentTime</strong>
+            </p>
+        </div>
+
+        <div class="status-badge">
+            @Model.Status
+        </div>
+    </div>
+
+
+    <!-- Appointment Information -->
+    <div class="details-section">
+
+        <div class="section-heading">
+            <div class="section-icon">
+                <i class="bi bi-calendar2-week"></i>
+            </div>
+
+            <div>
+                <h2>Appointment Information</h2>
+                <p>Schedule and visit details for this appointment.</p>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <div class="info-grid">
+
+            <div class="detail-card">
+                <span>Appointment Date</span>
+                <strong>@Model.AppointmentDate.ToString("dd MMM yyyy")</strong>
+            </div>
+
+            <div class="detail-card">
+                <span>Appointment Time</span>
+                <strong>@Model.AppointmentTime</strong>
+            </div>
+
+            <div class="detail-card">
+                <span>Status</span>
+                <strong>@Model.Status</strong>
+            </div>
+
+            <div class="detail-card">
+                <span>Doctor</span>
+                <strong>@(Model.Doctor?.FullName ?? "Not Assigned")</strong>
+            </div>
+
+            <div class="detail-card">
+                <span>Patient</span>
+                <strong>@(Model.Patient?.FullName ?? "Not Assigned")</strong>
+            </div>
+
+            <div class="detail-card">
+                <span>Reason for Visit</span>
+                <strong>@(Model.ReasonForVisit ?? "Not Provided")</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Record Information -->
+    <div class="details-section">
+
+        <div class="section-heading">
+            <div class="section-icon">
+                <i class="bi bi-clock-history"></i>
+            </div>
+
+            <div>
+                <h2>Record Information</h2>
+                <p>Appointment record creation and update details.</p>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <div class="info-grid">
+
+            <div class="detail-card">
+                <span>Created At</span>
+                <strong>@Model.CreatedAt.ToString("dd MMM yyyy, hh:mm tt")</strong>
+            </div>
+
+            <div class="detail-card">
+                <span>Last Updated</span>
+                <strong>@Model.UpdatedAt?.ToString("dd MMM yyyy, hh:mm tt")</strong>
+
+        </div>
+
+    </div>
+
+
+    <!-- Actions -->
+    <div class="details-actions">
+
+        <a asp-action="Index" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left"></i>
+            Back to Appointments
+        </a>
+
+        <a asp-action="Edit"
+           asp-route-id="@Model.AppointmentId"
+           class="btn btn-primary">
+            <i class="bi bi-pencil-square"></i>
+            Edit Appointment
+        </a>
+
+    </div>
+
+</div>

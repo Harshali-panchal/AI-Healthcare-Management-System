@@ -39,10 +39,355 @@ button.accept-policy {
   line-height: inherit;
 }
 
+html {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+    margin-top: auto;
+}
+
+
+/* =========================================
+   AI HEALTHCARE - SAGE & WARM NEUTRAL THEME
+   ========================================= */
+
+html {
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background: #FCFBF8;
+    color: #2F3A32;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar {
+    background: #4A7C59 !important;
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(47, 58, 50, 0.08);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #FFFFFF !important;
+}
+
+.navbar .nav-link {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-weight: 500;
+    margin-left: 8px;
+    transition: 0.2s ease;
+}
+
+    .navbar .nav-link:hover {
+        color: #D4A574 !important;
+    }
+
+/* ================= MAIN CONTENT ================= */
+
+main {
+    min-height: calc(100vh - 140px);
+    padding-top: 35px;
+    padding-bottom: 35px;
+}
+
+/* ================= HEADINGS ================= */
+
+h1 {
+    font-weight: 700;
+    color: #4A7C59;
+}
+
+h4 {
+    color: #2F3A32;
+    font-weight: 600;
+}
+
+/* ================= CARDS ================= */
+
+.card {
+    background: #FFFFFF;
+    border: 1px solid #E9E4DC;
+    border-radius: 14px;
+    box-shadow: 0 5px 18px rgba(47, 58, 50, 0.08);
+}
+
+    .card:hover {
+        box-shadow: 0 8px 24px rgba(47, 58, 50, 0.12);
+    }
+
+/* ================= FORMS ================= */
+
+.form-control,
+.form-select {
+    border-radius: 8px;
+    padding: 10px 12px;
+    border: 1px solid #D9D4CC;
+    background-color: #FFFFFF;
+}
+
+    .form-control:focus,
+    .form-select:focus {
+        border-color: #5F8575;
+        box-shadow: 0 0 0 0.2rem rgba(95, 133, 117, 0.15);
+    }
+
+/* ================= PRIMARY BUTTON ================= */
+
+.btn-primary {
+    color: #FFFFFF !important;
+    background-color: #4A7C59 !important;
+    border-color: #4A7C59 !important;
+    border-radius: 8px;
+    padding: 9px 18px;
+    font-weight: 500;
+}
+
+    .btn-primary:hover {
+        background-color: #3D694A !important;
+        border-color: #3D694A !important;
+    }
+
+/* ================= SECONDARY BUTTON ================= */
+
+.btn-secondary {
+    background-color: #5F8575;
+    border-color: #5F8575;
+    border-radius: 8px;
+    padding: 9px 18px;
+}
+
+    .btn-secondary:hover {
+        background-color: #4A7C59;
+        border-color: #4A7C59;
+    }
+
+/* ================= ACCENT BUTTON ================= */
+
+.btn-warning {
+    background-color: #D4A574;
+    border-color: #D4A574;
+    color: #FFFFFF;
+}
+
+    .btn-warning:hover {
+        background-color: #BD8D5D;
+        border-color: #BD8D5D;
+        color: #FFFFFF;
+    }
+
+/* ================= TABLES ================= */
+
+.table {
+    background: #FFFFFF;
+}
+
+    .table thead {
+        background-color: #F3EFE8;
+    }
+
+    .table th {
+        color: #4A7C59;
+        font-weight: 700;
+    }
+
+/* ================= LINKS ================= */
+
+a {
+    color: #4A7C59;
+}
+
+    a:hover {
+        color: #D4A574;
+    }
+
+/* ================= FOOTER ================= */
+
+.footer {
+    background-color: #FFFFFF;
+    border-top: 1px solid #E9E4DC !important;
+    color: #6B746D;
+}
+
+/* ================= NAV PILLS ================= */
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+    background-color: #4A7C59 !important;
+    border-color: #4A7C59 !important;
+}
+
+
+/* =========================================
+   DOCTOR CREATE FORM
+========================================= */
+
+.doctor-form-page {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 55px 35px 80px;
+}
+
+.doctor-form-header {
+    margin-bottom: 30px;
+}
+
+    .doctor-form-header h1 {
+        color: #4A7C59;
+        font-size: 2.6rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .doctor-form-header p {
+        color: #6c757d;
+        font-size: 1.05rem;
+        margin-bottom: 0;
+    }
+
+.doctor-form-card {
+    background: #ffffff;
+    border: 1px solid #e7e1d8;
+    border-radius: 18px;
+    padding: 38px 45px;
+    box-shadow: 0 8px 25px rgba(74, 124, 89, 0.08);
+}
+
+.doctor-card-heading {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.doctor-icon {
+    font-size: 2.5rem;
+}
+
+.doctor-card-heading h3 {
+    color: #3d5f48;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 3px;
+}
+
+.doctor-card-heading p {
+    color: #777;
+    margin-bottom: 0;
+}
+
+.doctor-form-card hr {
+    margin: 25px 0 30px;
+    border-color: #e7e1d8;
+}
+
+.doctor-form-card .form-label {
+    color: #3d5f48;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.doctor-form-card .form-control {
+    border: 1px solid #d9d5ce;
+    border-radius: 10px;
+    padding: 12px 15px;
+    background-color: #FCFBF8;
+    min-height: 48px;
+}
+
+    .doctor-form-card .form-control:focus {
+        border-color: #5F8575;
+        box-shadow: 0 0 0 0.2rem rgba(95, 133, 117, 0.15);
+        background-color: #ffffff;
+    }
+
+.verification-section {
+    margin-top: 35px;
+    padding: 18px 20px;
+    background: #f7f4ee;
+    border: 1px solid #e7dfd3;
+    border-radius: 10px;
+}
+
+    .verification-section .form-check-label {
+        color: #3d5f48;
+        font-weight: 600;
+    }
+
+    .verification-section .form-check-input:checked {
+        background-color: #4A7C59;
+        border-color: #4A7C59;
+    }
+
+.doctor-form-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 35px;
+}
+
+.doctor-submit-btn {
+    background-color: #4A7C59 !important;
+    border-color: #4A7C59 !important;
+    padding: 12px 28px;
+    border-radius: 9px;
+    font-weight: 600;
+}
+
+    .doctor-submit-btn:hover {
+        background-color: #3d6849 !important;
+        border-color: #3d6849 !important;
+    }
+
+.doctor-cancel-btn {
+    padding: 12px 25px;
+    border-radius: 9px;
+    font-weight: 600;
+    border-color: #b8b2aa;
+    color: #666;
+}
+
+    .doctor-cancel-btn:hover {
+        background-color: #f3eee6;
+        border-color: #a9a198;
+        color: #3d5f48;
+    }
+
+@media (max-width: 768px) {
+
+    .doctor-form-page {
+        padding: 35px 18px;
+    }
+
+    .doctor-form-card {
+        padding: 25px 20px;
+    }
+
+    .doctor-form-header h1 {
+        font-size: 2rem;
+    }
+
+    .doctor-form-actions {
+        flex-direction: column;
+    }
+
+        .doctor-form-actions .btn,
+        .doctor-form-actions input {
+            width: 100%;
+        }
 }

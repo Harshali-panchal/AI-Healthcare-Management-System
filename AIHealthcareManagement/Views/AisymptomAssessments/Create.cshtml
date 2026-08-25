@@ -1,0 +1,188 @@
+﻿@model AIHealthcareManagement.Models.AisymptomAssessment
+
+@{
+    ViewData["Title"] = "New AI Assessment";
+}
+
+<div class="page-header">
+
+    <div>
+        <h1>AI Symptom Assessment</h1>
+        <p>Analyze patient symptoms and generate an AI-powered preliminary assessment.</p>
+    </div>
+
+    <a asp-action="Index" class="btn btn-outline-secondary">
+        <i class="bi bi-arrow-left"></i>
+        Assessment History
+    </a>
+
+</div>
+
+
+<div class="form-card">
+
+    <!-- Header -->
+    <div class="form-card-header">
+
+        <div class="section-icon">
+            <i class="bi bi-cpu"></i>
+        </div>
+
+        <div>
+            <h2>AI Symptom Analysis</h2>
+            <p>Select a patient and describe their symptoms for AI-based assessment.</p>
+        </div>
+
+    </div>
+
+    <div class="section-divider"></div>
+
+
+    <form asp-action="Create" method="post">
+
+        <div asp-validation-summary="ModelOnly"
+             class="text-danger mb-3">
+        </div>
+
+
+        <!-- Patient Selection -->
+        <div class="form-section">
+
+            <div class="section-heading">
+
+                <div class="section-icon small-icon">
+                    <i class="bi bi-person"></i>
+                </div>
+
+                <div>
+                    <h3>Patient Information</h3>
+                    <p>Select the patient whose symptoms need to be assessed.</p>
+                </div>
+
+            </div>
+
+
+            <div class="form-grid">
+
+                <div class="form-group full-width">
+
+                    <label asp-for="PatientId">
+                        Select Patient
+                    </label>
+
+                    <select asp-for="PatientId"
+                            class="form-control"
+                            asp-items="ViewBag.PatientId">
+
+                        <option value="">
+                            -- Select Patient --
+                        </option>
+
+                    </select>
+
+                    <span asp-validation-for="PatientId"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Symptoms -->
+        <div class="form-section">
+
+            <div class="section-heading">
+
+                <div class="section-icon small-icon">
+                    <i class="bi bi-clipboard-pulse"></i>
+                </div>
+
+                <div>
+                    <h3>Symptoms Description</h3>
+                    <p>Describe the patient's symptoms in as much detail as possible.</p>
+                </div>
+
+            </div>
+
+
+            <div class="form-grid">
+
+                <div class="form-group full-width">
+
+                    <label asp-for="SymptomsInput">
+                        Describe Symptoms
+                    </label>
+
+                    <textarea asp-for="SymptomsInput"
+                              class="form-control"
+                              rows="6"
+                              placeholder="Example: Fever, headache, dizziness, fatigue and body pain for the last two days..."></textarea>
+
+                    <span asp-validation-for="SymptomsInput"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- AI Information -->
+            <div class="ai-info-box">
+
+                <div class="ai-info-icon">
+                    <i class="bi bi-info-circle"></i>
+                </div>
+
+                <div>
+                    <strong>AI-Powered Preliminary Assessment</strong>
+
+                    <p>
+                        The AI will analyze the entered symptoms and generate
+                        an assessment summary, urgency level, and confidence score.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-divider"></div>
+
+
+        <!-- Actions -->
+        <div class="form-actions">
+
+            <a asp-action="Index"
+               class="btn btn-outline-secondary">
+
+                <i class="bi bi-arrow-left"></i>
+                Cancel
+
+            </a>
+
+
+            <button type="submit"
+                    class="btn btn-primary">
+
+                <i class="bi bi-cpu"></i>
+                Analyze Symptoms
+
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,107 @@
+﻿@model IEnumerable<AIHealthcareManagement.Models.MedicalRecord>
+
+@{
+    ViewData["Title"] = "Medical Records";
+}
+
+<div class="page-header">
+    <div>
+        <h1>Medical Records</h1>
+        <p>Manage and review patient medical history and consultation records.</p>
+    </div>
+
+    <a asp-action="Create" class="btn-primary">
+        <i class="bi bi-plus-lg"></i>
+        Add Medical Record
+    </a>
+</div>
+
+<div class="content-card">
+
+    <div class="table-header">
+        <div>
+            <h2>Medical Record List</h2>
+            <p>View and manage all patient medical records.</p>
+        </div>
+
+        <div class="count-badge">
+            @Model.Count() Records
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="data-table">
+
+            <thead>
+                <tr>
+                    <th>Patient</th>
+                    <th>Doctor</th>
+                    <th>Diagnosis</th>
+                    <th>Record Date</th>
+                    <th>Consultation Notes</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <strong>@item.Patient?.FullName</strong>
+                        </td>
+
+                        <td>
+                            Dr. @item.Doctor?.FullName
+                        </td>
+
+                        <td>
+                            <span class="diagnosis-text">
+                                @item.Diagnosis
+                            </span>
+                        </td>
+
+                        <td>
+                            @item.RecordDate.ToString("dd MMM yyyy")
+                        </td>
+
+                        <td>
+                            <span class="notes-preview">
+                                @item.ConsultationNotes
+                            </span>
+                        </td>
+
+                        <td>
+                            <div class="action-buttons">
+
+                                <a asp-action="Edit"
+                                   asp-route-id="@item.RecordId"
+                                   class="btn-icon btn-edit"
+                                   title="Edit">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+
+                                <a asp-action="Details"
+                                   asp-route-id="@item.RecordId"
+                                   class="btn-icon btn-view"
+                                   title="View Details">
+                                    <i class="bi bi-eye"></i>
+                                </a>
+
+                                <a asp-action="Delete"
+                                   asp-route-id="@item.RecordId"
+                                   class="btn-icon btn-delete-icon"
+                                   title="Delete">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+
+</div>

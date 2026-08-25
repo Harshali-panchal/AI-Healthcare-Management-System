@@ -1,0 +1,127 @@
+﻿@model AIHealthcareManagement.Models.AisymptomAssessment
+
+@{
+    ViewData["Title"] = "Delete Assessment";
+}
+
+<div class="page-header">
+    <div>
+        <h1>Delete Assessment</h1>
+        <p>Review the assessment details before permanently deleting it.</p>
+    </div>
+</div>
+
+<div class="content-card delete-assessment-card">
+
+    <div class="delete-warning-header">
+
+        <div class="warning-icon">
+            <i class="bi bi-exclamation-triangle"></i>
+        </div>
+
+        <div>
+            <h2>Delete this assessment?</h2>
+            <p>
+                This action will permanently remove the AI symptom assessment.
+                This cannot be undone.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="delete-details-grid">
+
+        <div class="detail-card">
+            <span class="detail-label">
+                <i class="bi bi-person"></i>
+                Patient
+            </span>
+
+            <strong>@Model.Patient?.FullName</strong>
+        </div>
+
+
+        <div class="detail-card">
+            <span class="detail-label">
+                <i class="bi bi-exclamation-triangle"></i>
+                Urgency Level
+            </span>
+
+            <strong>@Model.UrgencyLevel</strong>
+        </div>
+
+
+        <div class="detail-card">
+            <span class="detail-label">
+                <i class="bi bi-graph-up"></i>
+                Confidence Score
+            </span>
+
+            <strong>@($"{Model.ConfidenceScore * 100:0}%")</strong>
+        </div>
+
+
+        <div class="detail-card">
+            <span class="detail-label">
+                <i class="bi bi-calendar-event"></i>
+                Created At
+            </span>
+
+            <strong>
+                @Model.CreatedAt.ToString("dd MMM yyyy, hh:mm tt")
+            </strong>
+        </div>
+
+    </div>
+
+
+    <div class="assessment-section">
+
+        <div class="section-title">
+            <i class="bi bi-clipboard-pulse"></i>
+            <h3>Reported Symptoms</h3>
+        </div>
+
+        <div class="assessment-content symptoms-content">
+            @Model.SymptomsInput
+        </div>
+
+    </div>
+
+
+    <div class="assessment-section">
+
+        <div class="section-title">
+            <i class="bi bi-robot"></i>
+            <h3>AI Result Summary</h3>
+        </div>
+
+        <div class="assessment-content ai-summary">
+            @Model.AiresultSummary
+        </div>
+
+    </div>
+
+
+    <form asp-action="Delete" class="delete-form">
+
+        <input type="hidden" asp-for="AssessmentId" />
+
+        <div class="form-actions">
+
+            <button type="submit" class="btn-delete">
+                <i class="bi bi-trash"></i>
+                Delete Assessment
+            </button>
+
+            <a asp-action="Index" class="btn-secondary">
+                <i class="bi bi-x-lg"></i>
+                Cancel
+            </a>
+
+        </div>
+
+    </form>
+
+</div>

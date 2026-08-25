@@ -1,0 +1,177 @@
+﻿@model IEnumerable<AIHealthcareManagement.Models.AisymptomAssessment>
+
+@{
+    ViewData["Title"] = "AI Symptom Assessments";
+}
+
+<div class="page-header">
+
+    <div>
+        <h1>AI Symptom Assessments</h1>
+        <p>Review AI-generated symptom analysis and patient assessment results.</p>
+    </div>
+
+    <a asp-action="Create" class="btn-primary">
+        <i class="bi bi-plus-lg"></i>
+        New AI Assessment
+    </a>
+
+</div>
+
+
+<div class="content-card">
+
+    <div class="table-header">
+
+        <div>
+            <h2>Assessment History</h2>
+            <p>View and manage all AI-generated symptom assessments.</p>
+        </div>
+
+        <div class="count-badge">
+            @Model.Count() Assessments
+        </div>
+
+    </div>
+
+
+    <div class="table-responsive">
+
+        <table class="data-table">
+
+            <thead>
+                <tr>
+                    <th>Patient</th>
+                    <th>Symptoms</th>
+                    <th>AI Assessment</th>
+                    <th>Urgency</th>
+                    <th>Confidence</th>
+                    <th>Model</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <!-- Patient -->
+                        <td>
+                            <strong>
+                                @item.Patient?.FullName
+                            </strong>
+                        </td>
+
+
+                        <!-- Symptoms -->
+                        <td>
+                            <span class="notes-preview">
+                                @item.SymptomsInput
+                            </span>
+                        </td>
+
+
+                        <!-- AI Result -->
+                        <td>
+                            <span class="notes-preview">
+                                @item.AiresultSummary
+                            </span>
+                        </td>
+
+
+                        <!-- Urgency -->
+                        <td>
+                            @{
+                                var urgencyClass = item.UrgencyLevel?.ToLower() switch
+                                {
+                                    "high" => "status-high",
+                                    "medium" => "status-medium",
+                                    "low" => "status-low",
+                                    _ => "status-default"
+                                };
+                            }
+
+                            <span class="status-badge @urgencyClass">
+                                @item.UrgencyLevel
+                            </span>
+                        </td>
+
+
+                        <!-- Confidence -->
+                        <td>
+                            <div class="confidence-score">
+
+                                <i class="bi bi-graph-up"></i>
+
+                                @item.ConfidenceScore%
+
+                            </div>
+                        </td>
+
+
+                        <!-- Model Version -->
+                        <td>
+                            <span class="model-version">
+                                @item.ModelVersion
+                            </span>
+                        </td>
+
+
+                        <!-- Created Date -->
+                        <td>
+                            @item.CreatedAt.ToString("dd MMM yyyy")
+                        </td>
+
+
+                        <!-- Actions -->
+                        <td>
+
+                            <div class="action-buttons">
+
+                                <a asp-action="Edit"
+                                   asp-route-id="@item.AssessmentId"
+                                   class="btn-icon btn-edit"
+                                   title="Edit">
+
+                                    <i class="bi bi-pencil"></i>
+
+                                </a>
+
+
+                                <a asp-action="Details"
+                                   asp-route-id="@item.AssessmentId"
+                                   class="btn-icon btn-view"
+                                   title="View Details">
+
+                                    <i class="bi bi-eye"></i>
+
+                                </a>
+
+
+                                <a asp-action="Delete"
+                                   asp-route-id="@item.AssessmentId"
+                                   class="btn-icon btn-delete-icon"
+                                   title="Delete">
+
+                                    <i class="bi bi-trash"></i>
+
+                                </a>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>

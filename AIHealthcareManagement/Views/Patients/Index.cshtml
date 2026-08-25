@@ -1,95 +1,298 @@
 ﻿@model IEnumerable<AIHealthcareManagement.Models.Patient>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Patients";
+
+    var totalPatients = Model.Count();
+
+    var malePatients = Model.Count(p => p.Gender != null &&
+        p.Gender.ToLower() == "male");
+
+    var femalePatients = Model.Count(p => p.Gender != null &&
+        p.Gender.ToLower() == "female");
+
+    var patientsWithAllergies = Model.Count(p =>
+        !string.IsNullOrWhiteSpace(p.Allergies));
 }
 
-<h1>Index</h1>
+<div class="patient-index-page">
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FullName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateOfBirth)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Gender)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BloodGroup)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Address)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Allergies)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ChronicConditions)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EmergencyContactName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EmergencyContactPhone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedAt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.User)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateOfBirth)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gender)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BloodGroup)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Allergies)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ChronicConditions)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmergencyContactName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmergencyContactPhone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.UserId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.PatientId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PatientId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.PatientId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <!-- Page Header -->
+    <div class="patient-page-header">
+
+        <div>
+            <h1>Patient Management</h1>
+            <p>
+                Manage patient profiles, medical information and healthcare records.
+            </p>
+        </div>
+
+        <a asp-action="Create" class="btn btn-primary patient-create-btn">
+            + Add New Patient
+        </a>
+
+    </div>
+
+
+    <!-- Statistics Cards -->
+    <div class="patient-stats-grid">
+
+        <div class="patient-stat-card">
+            <div class="patient-stat-icon">👥</div>
+
+            <div>
+                <span>Total Patients</span>
+                <strong>@totalPatients</strong>
+            </div>
+        </div>
+
+
+        <div class="patient-stat-card">
+            <div class="patient-stat-icon">👨</div>
+
+            <div>
+                <span>Male Patients</span>
+                <strong>@malePatients</strong>
+            </div>
+        </div>
+
+
+        <div class="patient-stat-card">
+            <div class="patient-stat-icon">👩</div>
+
+            <div>
+                <span>Female Patients</span>
+                <strong>@femalePatients</strong>
+            </div>
+        </div>
+
+
+        <div class="patient-stat-card">
+            <div class="patient-stat-icon">⚕️</div>
+
+            <div>
+                <span>With Allergies</span>
+                <strong>@patientsWithAllergies</strong>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- Patient List Card -->
+    <div class="patient-list-card">
+
+        <div class="patient-list-header">
+
+            <div>
+                <h2>👥 Patient Directory</h2>
+                <p>View and manage all registered patient profiles.</p>
+            </div>
+
+            <span class="patient-count-badge">
+                @totalPatients Patients
+            </span>
+
+        </div>
+
+
+        <div class="patient-table-wrapper">
+
+            <table class="table patient-table">
+
+                <thead>
+                    <tr>
+                        <th>Patient</th>
+                        <th>Date of Birth</th>
+                        <th>Gender</th>
+                        <th>Blood Group</th>
+                        <th>Emergency Contact</th>
+                        <th>Medical Information</th>
+                        <th class="patient-action-column">Actions</th>
+                    </tr>
+                </thead>
+
+
+                <tbody>
+
+                    @if (Model.Any())
+                    {
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <!-- Patient Name -->
+                                <td>
+                                    <div class="patient-name-cell">
+
+                                        <div class="patient-avatar">
+                                            👤
+                                        </div>
+
+                                        <div>
+                                            <strong>@item.FullName</strong>
+
+                                            @if (!string.IsNullOrWhiteSpace(item.Address))
+                                            {
+                                                <span>@item.Address</span>
+                                            }
+                                        </div>
+
+                                    </div>
+                                </td>
+
+
+                                <!-- Date of Birth -->
+                                <td>
+                                    @(item.DateOfBirth?.ToString("dd MMM yyyy") ?? "-")
+                                </td>
+
+
+                                <!-- Gender -->
+                                <td>
+                                    @if (!string.IsNullOrWhiteSpace(item.Gender))
+                                    {
+                                        <span class="patient-gender-badge">
+                                            @item.Gender
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span>-</span>
+                                    }
+                                </td>
+
+
+                                <!-- Blood Group -->
+                                <td>
+
+                                    @if (!string.IsNullOrWhiteSpace(item.BloodGroup))
+                                    {
+                                        <span class="blood-group-badge">
+                                            @item.BloodGroup
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span>-</span>
+                                    }
+
+                                </td>
+
+
+                                <!-- Emergency Contact -->
+                                <td>
+
+                                    @if (!string.IsNullOrWhiteSpace(item.EmergencyContactName))
+                                    {
+                                        <div class="emergency-contact">
+
+                                            <strong>
+                                                @item.EmergencyContactName
+                                            </strong>
+
+                                            <span>
+                                                @item.EmergencyContactPhone
+                                            </span>
+
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <span>-</span>
+                                    }
+
+                                </td>
+
+
+                                <!-- Medical Information -->
+                                <td>
+
+                                    <div class="medical-info-cell">
+
+                                        @if (!string.IsNullOrWhiteSpace(item.Allergies))
+                                        {
+                                            <span class="medical-warning-badge">
+                                                Allergies
+                                            </span>
+                                        }
+
+                                        @if (!string.IsNullOrWhiteSpace(item.ChronicConditions))
+                                        {
+                                            <span class="medical-condition-badge">
+                                                Chronic Condition
+                                            </span>
+                                        }
+
+                                        @if (string.IsNullOrWhiteSpace(item.Allergies) &&
+                                       string.IsNullOrWhiteSpace(item.ChronicConditions))
+                                        {
+                                            <span class="no-medical-info">
+                                                No recorded conditions
+                                            </span>
+                                        }
+
+                                    </div>
+
+                                </td>
+
+
+                                <!-- Actions -->
+                                <td class="patient-actions">
+
+                                    <a asp-action="Details"
+                                       asp-route-id="@item.PatientId"
+                                       class="btn btn-sm btn-outline-primary">
+                                        View
+                                    </a>
+
+                                    <a asp-action="Edit"
+                                       asp-route-id="@item.PatientId"
+                                       class="btn btn-sm btn-outline-secondary">
+                                        Edit
+                                    </a>
+
+                                    <a asp-action="Delete"
+                                       asp-route-id="@item.PatientId"
+                                       class="btn btn-sm btn-outline-danger">
+                                        Delete
+                                    </a>
+
+                                </td>
+
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="7" class="patient-empty-state">
+
+                                <div class="empty-patient-icon">
+                                    🧑‍⚕️
+                                </div>
+
+                                <h3>No Patients Found</h3>
+
+                                <p>
+                                    Start by adding your first patient to the healthcare system.
+                                </p>
+
+                                <a asp-action="Create"
+                                   class="btn btn-primary">
+                                    + Add First Patient
+                                </a>
+
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
