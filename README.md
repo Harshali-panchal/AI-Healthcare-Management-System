@@ -1,318 +1,166 @@
-# AI Healthcare Management System
+# 🏥 AI Healthcare Management System
 
-## Group 24
+### Group 24
 
-An AI-powered healthcare management system designed to provide a centralized platform for patients, doctors, and administrators. The system aims to simplify patient management, appointment scheduling, medical record handling, prescriptions, reminders, notifications, and AI-assisted symptom analysis.
+A web-based **AI Healthcare Management System** developed as a group project to provide an integrated platform for managing healthcare-related information and workflows.
 
----
+The application provides modules for managing **doctors, patients, appointments, medical records, prescriptions**, and an **AI-assisted symptom assessment feature** through a centralized web application.
 
-## Project Overview
-
-The **AI Healthcare Management System** is a web-based healthcare management application developed using ASP.NET Core and Entity Framework Core.
-
-The system is designed around three major user roles:
-
-- Patient
-- Doctor
-- Administrator
-
-The application provides a structured platform for managing healthcare-related information while integrating AI-assisted functionality for preliminary symptom analysis.
+The project is developed using **ASP.NET Core MVC, C#, .NET 8, Entity Framework Core, Razor Views, and relational database technologies**.
 
 ---
 
-## Technology Stack
+# 📌 Project Overview
 
-### Frontend
-- CSS3
-- HTML5
-- Bootstrap
-- Razor Views
+Healthcare management often involves maintaining information related to patients, doctors, appointments, prescriptions, and medical records across multiple workflows.
 
-### Backend
-- ASP.NET Core
-- C#
-- .NET 8
-- MVC Architecture
+The **AI Healthcare Management System** is designed to centralize these healthcare operations into a single web-based platform.
 
-### Database
-- Microsoft SQL Server
-- Entity Framework Core
-- Entity Framework Core Migrations
+The system provides functionality for:
 
-### Development Tools
-- Visual Studio
-- Git
-- GitHub
-
----
-
-## Key Features
-
-### User Management
-- User registration and management
-- Role-based access
-- Patient, Doctor and Administrator profiles
-- Account status management
-
-### Patient Management
-- Patient profile creation
-- Patient information management
-- Date of birth and gender details
-- Blood group information
-- Address and allergy information
-- Chronic condition details
-- Emergency contact information
-- Patient CRUD operations
-
-### Doctor Management
-- Doctor profile management
-- Specialization details
-- Qualification and license information
-- Years of experience
-- Consultation fee
-- Doctor availability
-
-### Appointment Management
-- Doctor and patient appointment management
-- Appointment date and time
-- Appointment status
-- Reason for visit
-- Appointment updates
-
-### Medical Records & Prescriptions
-- Medical record management
-- Diagnosis and consultation notes
-- Prescription management
-- Medicine name, dosage and frequency
-- Treatment duration and instructions
-
-### AI Symptom Analysis
-- Patient symptom input
-- AI-assisted preliminary analysis
-- Urgency level
-- Confidence score
-- Model version tracking
-
-### Reminders & Notifications
-- Appointment reminders
-- Medication reminders
-- Follow-up reminders
-- In-app notifications
-- Email/SMS notification support planned
-
-### Security & Audit
-- Role-based access
-- User security information
-- Audit logging
-- Tracking of important system actions
-
----
-
-# Team Members
-
-| Enrollment No. | Member Name |
-|---|---|
-| IN26009636 | Ritika Raghuvanshi |
-| IN260011823 | Prasiddhi Jain |
-| IN26011978 | Priyansh Bansal |
-| IN26009739 | Harshali Panchal |
-| IN26009756 | Nishant Sharma |
-| IN26011855 | Vishesh Kumar Jain |
-| IN26010908 | Kamal Laxman Balwani |
-
----
-
-# Individual Contributions
-
-## 1. Ritika Raghuvanshi
-
-### Contribution
-- Requirement analysis and project planning
-- Healthcare system workflow analysis
-- Patient and doctor module planning
-- Functional requirements discussion
-- Coordination of module integration
-
-### Current Work
-- Requirement refinement
-- Module coordination
-- Reviewing overall project workflow
-
----
-
-## 2. Prasiddhi Jain
-
-### Contribution
-- Database and data-model Planning
-- Healthcare entities and relationships
-- Database structure analysis
-- Support for Entity Framework Core Integration
-
-### Current Work
-- Database-related implementation
-- Reviewing relationships between system entities
-- Supporting database integration
-
----
-
-## 3. Priyansh Bansal
-
-### Contribution
-- Doctor management module planning
-- Doctor profile functionality
-- Doctor specialization and availability requirements
-- Support for appointment-related functionality
-
-### Current Work
-- Doctor management module
-- Doctor availability
-- Appointment management
-
----
-
-## 4. Harshali Panchal
-
-### Contribution
-- ASP.NET Core MVC implementation
-- Entity Framework Core integration
-- ApplicationDbContext configuration
-- Patient Management module
-- Patient CRUD implementation
-- SQL Server database integration
-- Testing patient data insertion and retrieval
-- GitHub repository management and project integration
-
-### Completed Work
-- Patient Create functionality
-- Patient data successfully stored in SQL Server
-- Patient data successfully displayed from SQL Server
-- Patient CRUD structure implemented
-- Database connection and Entity Framework Core integration configured
-
-### Current Work
-- Complete CRUD verification
-- Integration of remaining modules
-- Testing and debugging
-
----
-
-## 5. Nishant Sharma
-
-### Contribution
-- Appointment management planning
-- Appointment workflow
-- Patient-doctor appointment relationships
-- Appointment status handling
-
-### Current Work
-- Appointment module implementation
-- Appointment scheduling workflow
-- Appointment testing
-
----
-
-## 6. Vishesh Kumar Jain
-
-### Contribution
-- Medical records and prescription module planning
-- Medical record structure
-- Prescription workflow
-- Medicine and dosage information handling
-
-### Current Work
-- Medical Records module
-- Prescription management
-- Integration with patient and doctor data
-
----
-## 7. Kamal Laxman Balwani
-
-### Contribution
-- AI-assisted symptom analysis planning
-- AI integration research
-- Reminders and notification requirements
-- Testing and documentation support
-
-### Current Work
-- AI symptom analysis
-- AI integration
-- Reminder and notification functionality
-- Testing and documentation
-
----
-
-# Current Project Progress
-
-## Completed
-
-- ASP.NET Core MVC project setup
-- .NET 8 configuration
-- Entity Framework Core integration
-- SQL Server database integration
-- Database models scaffolded
-- ApplicationDbContext configured
-- Patient Management module implemented
-- Patient Create functionality implemented
-- Patient data successfully stored in SQL Server
-- Patient data successfully retrieved and displayed
-- Git repository initialized
-- Project uploaded to GitHub
-- Project README and team contribution documentation prepared
-
-## In Progress
-
-- Complete Patient CRUD verification
 - Doctor Management
+- Patient Management
 - Appointment Management
 - Medical Records
 - Prescription Management
-- AI Symptom Analysis
-- AI Integration
-- Authentication and Role-Based Access
-- Reminders and Notifications
-- UI improvements
-- Testing and documentation
+- AI-Assisted Symptom Assessment
+- Centralized healthcare information management
+- Database-driven application workflows
+- User-friendly web interface
+
+The application follows the **Model-View-Controller (MVC)** architectural pattern.
 
 ---
 
-# Database Design
+# 🎯 Project Objective
 
-The system uses Microsoft SQL Server with Entity Framework Core.
+The objective of this project is to develop a centralized healthcare management platform capable of handling major healthcare-related workflows through a single application.
 
-Major database entities include:
+The system aims to provide an organized approach for managing:
 
-- Roles
-- Users
-- Patients
-- Doctors
-- DoctorAvailability
-- Administrators
-- Appointments
-- MedicalRecords
-- Prescriptions
-- AISymptomAssessments
-- Reminders
-- Notifications
-- AuditLogs
-
-The database uses primary keys, foreign keys, relationships and indexes to maintain data consistency and support efficient queries.
+- Patient information
+- Doctor profiles
+- Doctor specialization and availability
+- Appointment scheduling
+- Medical history and records
+- Prescriptions and medicines
+- AI-assisted symptom analysis
+- Healthcare-related workflows
+- Secure and structured data management
 
 ---
 
-# Current Working Module: Patient Management
+# 👥 Team Members
 
-The Patient Management module is currently functional.
+| S. No. | Enrollment No. | Member Name |
+|-------:|----------------|-------------|
+| 1 | IN26009636 | Ritika Raghuvanshi |
+| 2 | IN260011823 | Prasiddhi Jain |
+| 3 | IN26011978 | Priyansh Bansal |
+| 4 | IN26009739 | Harshali Panchal |
+| 5 | IN26009756 | Nishant Sharma |
+| 6 | IN26011855 | Vishesh Kumar Jain |
+| 7 | IN26010908 | Kamal Laxman Balwani |
 
-Implemented functionality includes:
+---
 
-- Creating a patient
-- Storing patient information in SQL Server
-- Viewing patient records
+# 🤝 Team Contributions
+
+Individual contribution details for each team member are documented separately in [TEAM_CONTRIBUTIONS.md](./TEAM_CONTRIBUTIONS.md).
+
+---
+
+# 🛠️ Technology Stack
+
+## Backend
+
+- C#
+- ASP.NET Core MVC
+- .NET 8
+
+## Database and ORM
+
+- Entity Framework Core
+- SQL Server
+- PostgreSQL for cloud deployment support
+
+## Frontend
+
+- HTML
+- CSS
+- Bootstrap
+- Razor Views
+
+## Development and Deployment Tools
+
+- Visual Studio
+- Git
+- GitHub
+- SQL Server Management Studio
+
+---
+
+# 🏗️ System Architecture
+
+The project follows the **ASP.NET Core MVC Architecture**.
+
+```text
+                    ┌──────────────────────┐
+                    │      Web Browser     │
+                    └──────────┬───────────┘
+                               │
+                               ▼
+                    ┌──────────────────────┐
+                    │   ASP.NET Core MVC   │
+                    │                      │
+                    │    Controllers       │
+                    │    Razor Views       │
+                    │    Models            │
+                    └──────────┬───────────┘
+                               │
+                               ▼
+                    ┌──────────────────────┐
+                    │ Entity Framework Core│
+                    └──────────┬───────────┘
+                               │
+                               ▼
+                    ┌──────────────────────┐
+                    │   Relational Database│
+                    │ SQL Server/PostgreSQL│
+                    └──────────────────────┘
+```
+
+---
+
+# 📂 Main Modules
+
+## 👨‍⚕️ Doctor Management
+
+The Doctor Management module provides functionality related to doctor information and profiles.
+
+Features include:
+
+- Doctor profile management
+- Doctor information display
+- Specialization details
+- Doctor availability-related functionality
+- Doctor data integration with the application
+
+## 👥 Patient Management
+
+The Patient Management module handles patient-related healthcare information.
+
+Features include:
+
+- Patient information management
+- Patient profile creation
+- Patient listing
+- Patient details
 - Editing patient information
 - Deleting patient records
-- Displaying patient information in the MVC view
+- Database storage and retrieval
 
-Patient information includes:
+Patient-related information includes:
 
 - Full Name
 - Date of Birth
@@ -323,44 +171,95 @@ Patient information includes:
 - Chronic Conditions
 - Emergency Contact Name
 - Emergency Contact Phone
+- Created Date
+
+## 📅 Appointment Management
+
+The Appointment module manages doctor-patient appointment workflows.
+
+Features include:
+
+- Appointment scheduling
+- Doctor-patient appointment association
+- Appointment information management
+- Appointment status handling
+- Healthcare scheduling workflow
+
+## 📋 Medical Records
+
+The Medical Records module is designed to maintain patient healthcare information.
+
+Features include:
+
+- Patient medical record management
+- Healthcare history storage
+- Medical information organization
+- Record-based healthcare workflow
+
+## 💊 Prescription Management
+
+The Prescription module manages prescription-related information.
+
+Features include:
+
+- Prescription information management
+- Medicine details
+- Dosage-related information
+- Treatment instructions
+- Prescription data organization
+
+## 🤖 AI Symptom Assessment
+
+The AI Symptom Assessment module provides an AI-assisted approach for analyzing symptoms entered by users.
+
+The module is designed to:
+
+- Accept symptom-related information
+- Process healthcare symptoms
+- Provide AI-assisted assessment
+- Support preliminary symptom analysis
+- Display healthcare-related guidance through the application
+
+This feature is intended for project demonstration and educational purposes and is not a replacement for professional medical diagnosis.
 
 ---
 
-# Project Structure ==
+# 🗄️ Database Design
 
-```text
-AIHealthcareManagement
-│
-├── Controllers
-│   ├── HomeController.cs
-│   └── PatientsController.cs
-│
-├── Data
-│   └── ApplicationDbContext.cs
-│
-├── Models
-│   ├── Patient.cs
-│   ├── Doctor.cs
-│   ├── Administrator.cs
-│   ├── Appointment.cs
-│   ├── MedicalRecord.cs
-│   ├── Prescription.cs
-│   ├── AISymptomAssessment.cs
-│   └── ...
-│
-├── Views
-│   ├── Home
-│   ├── Patients
-│   │   ├── Create.cshtml
-│   │   ├── Edit.cshtml
-│   │   ├── Details.cshtml
-│   │   ├── Delete.cshtml
-│   │   └── Index.cshtml
-│   └── Shared
-│
-├── wwwroot
-│
-├── AIHealthcareDatabase.sql
-├── appsettings.json
-├── Program.cs
-└── README.md
+The system is designed around major healthcare-related entities.
+
+Current and planned entities include:
+
+- Users
+- Roles
+- Patients
+- Doctors
+- Doctor Availability
+- Administrators
+- Appointments
+- Medical Records
+- Prescriptions
+- AI Symptom Assessments
+- Reminders
+- Notifications
+- Audit Logs
+
+Entity relationships and foreign keys are used to maintain consistency between healthcare modules.
+
+---
+
+# 📸 Application Dashboard
+
+The application provides a centralized dashboard for accessing major healthcare modules.
+
+Available sections include:
+
+- Home
+- Doctors
+- Patients
+- Appointments
+- Medical Records
+- Prescriptions
+- AI Assessment
+
+The dashboard acts as the main navigation point for the healthcare management system.
