@@ -9,6 +9,7 @@ RUN dotnet publish "AIHealthcareManagement.csproj" -c Release -o /app/publish /p
 
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
+ENV DOTNET_HOSTBUILDER__RELOADCONFIGONCHANGE=false
 WORKDIR /app
 
 COPY --from=build /app/publish .
